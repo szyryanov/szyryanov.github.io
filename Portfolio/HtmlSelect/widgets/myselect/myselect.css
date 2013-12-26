@@ -1,0 +1,147 @@
+﻿
+/* ---------------------------- */
+/*             reset:           */
+/* ---------------------------- */
+
+.widget_myselect * {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+}
+
+.widget_myselect *:focus {
+  outline: 0;
+}
+
+/* ---------------------------- */
+/*       widget_myselect:       */
+/* ---------------------------- */
+
+.widget_myselect {
+    position: relative;
+    display: inline-block;
+}
+
+/* ---------------------------- */
+/*            main part         */
+/* ---------------------------- */
+
+.widget_myselect .part_main {
+    cursor: pointer;
+    padding: 2px 30px 2px 5px;
+    background: #444444;
+    background: -webkit-linear-gradient(top, #7f7f7f 0%, #535353 50%, #333333 50%, #000000 100%);
+    background: linear-gradient(to bottom, #7f7f7f 0%, #535353 50%, #333333 50%, #000000 100%);
+    border-radius: 3px;
+    position: relative;
+}
+
+/*
+    IE sometimes makes 1px top and bottom background lines pale, so they looks notable beside the border line (especially the bottom background line).
+    This IE bug seems not persistend, it occurs for the first myselect widget on the test page.
+    The .part_main_border div hides the pale lines.
+*/
+.widget_myselect .part_main .part_main_border {
+    border-radius: 3px;
+    position: absolute;
+    left:0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    border: 1px solid #404040;
+}
+
+
+.widget_myselect .part_main:hover {
+    box-shadow: 2px 2px 10px;
+}
+
+.widget_myselect .part_main.open {
+    z-index: 101;
+}
+
+.widget_myselect .part_text {
+    color: white;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    padding: 4px 10px 3px 5px;
+    line-height: 15px;
+}
+
+.widget_myselect .part_main:focus .part_text {
+    text-shadow: 0px 0px 1px #fff;
+}
+
+/* ----------------------------------------------- */
+/*     right part ( delimiter + arrow triangle):   */
+/* ----------------------------------------------- */
+
+.widget_myselect .part_delimiter {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.50);
+    border-right: 1px solid rgba(255, 255, 255, 0.30);
+}
+
+.widget_myselect .part_arrowDown {
+    width: 20px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.widget_myselect .part_arrowDown:after {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    border-top-color: white;
+    top: 9px;
+    left: 5px;
+}
+
+/* ---------------------------- */
+/*             popup:           */
+/* ---------------------------- */
+
+.widget_myselect .part_popup {
+    color: white;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    margin-top: -6px;
+    border: 1px solid #404040;
+    border-radius: 3px;
+    background: #5f5f5f;
+    left: 0px;
+    /*right: 0px;*/
+    z-index: 100;
+    padding: 4px 0 0 0;
+    width: auto;
+    height: auto;
+}
+
+/* ---------------------------- */
+/*         popup items:         */
+/* ---------------------------- */
+
+.widget_myselect .part_popup li {
+    padding: 3px 30px 3px 10px;
+    cursor: default;
+}
+
+.widget_myselect .part_popup li:hover {
+    background: #0b0b0b;
+    color: white;
+}
+
+.widget_myselect .part_popup li.selected {
+    background: #0b0b0b;
+    color: white;
+}
