@@ -1,0 +1,77 @@
+﻿
+/* -------- hidden ------- */
+
+.img-zoom-hidden {
+    display: none;
+}
+
+/* -------- background: ------- */
+
+.img-zoom-background {
+    opacity: 0.4;
+    background-color: black;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+/* -------- popup: ------- */
+
+.img-zoom-popup {
+    position: absolute;
+    border: 5px solid white;
+    padding: 0;
+    line-height: 1px;
+    background: silver;
+}
+
+
+.img-zoom-loading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto auto;
+}
+
+.img-zoom-large {
+    margin: auto auto;
+    display: block;
+}
+
+.img-zoom-large-low {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+/* -------- error text: ------- */
+
+p.img-zoom-error {
+    padding: 10px;
+    margin: 0;
+    font-family: Arial, Verdana;
+    font-size: 14px;
+    color: #333333;
+    word-wrap: break-word;
+    line-height: 1.5em;
+}
+
+p.img-zoom-error span {
+    font-weight: bold;
+}
+
+p.img-zoom-error a {
+    color: #0055cc;
+}
+
+p.img-zoom-error a:visited {
+    color: #aa0099;
+}
+
+
