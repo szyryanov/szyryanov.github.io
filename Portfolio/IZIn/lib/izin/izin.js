@@ -4,21 +4,47 @@
     "use strict";
 
     
-    // calculate the URLs:
-    //
-    var url_js = calcThisScriptSrc();
-    var url_css = url_js.replace(".js", ".css"); //.replace(".min.css", ".css");
-    //
-    // add css:
-    //
-    addStyleSheet(url_css);
-    
     // returns src property of the <script> tag currently processing by browser (i.e. this script file URL)
     // must be callid directly in the script, will not works inside "$(document).ready()"
     function calcThisScriptSrc() {
         var scripts = document.getElementsByTagName("script");
         return scripts[scripts.length - 1].src;
     }
+    
+    function calcScriptPathWithTrailingSlash(scriptUrl) {
+        return scriptUrl.replace(/[^\/\\]+$/, "");
+    }
+    
+    function isDevEnv(url_js) {
+        return /izinEnv.js/.test(url_js);
+    }
+    
+    function isMinified(url_js) {
+        return /.min.js/.test(url_js);
+    }
+    
+    function setupEnv() {
+        var url_js = calcThisScriptSrc();
+        if (isDevEnv(url_js)) {
+            izin_env.url_css = "../css/izin.css";
+            izin_env.url_image_loading = "../izin-images/image-loading.gif";
+        } else {
+            var path = calcScriptPathWithTrailingSlash(url_js);
+            izin_env.url_css = path + (isMinified(url_js) ? "izin.min.css" : "izin.css");
+            izin_env.url_image_loading = path + "image-loading.gif";
+        }
+    }
+    
+    function izin_env() {
+    }
+    
+    setupEnv();
+    
+    //
+    // add css:
+    //
+    addStyleSheet(izin_env.url_css); //url_css);
+    
     
     // add the url_css file to the page
     function addStyleSheet(url_css) {
@@ -164,7 +190,7 @@
                 var html = '';
                 //
                 html += '<div class="img-zoom-popup img-zoom-hidden cursor-zoom-out"> \r\n';
-                html += '    <img class="img-zoom-loading" src="img/image-loading.gif"  /> \r\n';
+                html += '    <img class="img-zoom-loading" src="' + izin_env.url_image_loading + '"  /> \r\n';
                 html += '    <a href="#" target="_blank" class="img-zoom-a-big"><img class="img-zoom-large" /></a> \r\n';
                 html += '    <p class="img-zoom-error"> \r\n';
                 html += '        <span>Error loading image:</span><br /> \r\n';
